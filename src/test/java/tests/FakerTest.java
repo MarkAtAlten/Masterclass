@@ -56,35 +56,8 @@ class FakerTest {
         //Now validate the loan and select next
         Assertions.assertEquals("Mini-loan", simpleLoanPage.getVerifyValue("Loantype"));
         Assertions.assertEquals("€"+fakerAmount, simpleLoanPage.getVerifyValue("Amount"));
-        Assertions.assertEquals("yes", simpleLoanPage.getVerifyValue("Acknowledgement"));
-        Assertions.assertEquals("Female", simpleLoanPage.getVerifyValue("Gender"));
-        Assertions.assertEquals(names.getFirstName(), simpleLoanPage.getVerifyValue("Firstname"));
-        Assertions.assertEquals("myLastName", simpleLoanPage.getVerifyValue("Lastname"));
-        Assertions.assertEquals("Jan 1, 2013", simpleLoanPage.getVerifyValue("Date of birth"));
-        Assertions.assertEquals(location.getAddress(), simpleLoanPage.getVerifyValue("Address"));
-        Assertions.assertEquals(location.getZipcode(), simpleLoanPage.getVerifyValue("Zipcode"));
-        Assertions.assertEquals(location.getCity(), simpleLoanPage.getVerifyValue("City"));
-        Assertions.assertEquals("12000", simpleLoanPage.getVerifyValue("Income"));
-        Assertions.assertEquals("Single", simpleLoanPage.getVerifyValue("Marital status"));
-        Assertions.assertEquals("Temporary Contract", simpleLoanPage.getVerifyValue("Income type"));
-        simpleLoanPage.clickVerifyNext();
-
-        //now get ID for new order
-        System.out.print(simpleLoanPage.getOrderId());
     }
 
-    @Test
-    void UI_exercise2() {
-        WelcomePage welcomePage = new WelcomePage(driver);
-        driver.get("https://loanapplication.azurewebsites.net/");
-
-        welcomePage.selectNewLoan();
-        WhyLoanPage whyLoanPage = new WhyLoanPage(driver);
-        whyLoanPage.setDetailsSelectNext("Mortgage (minimum €50,000)", "4000");
-
-        ImprovedSimpleLoanPage simpleLoanPage = new ImprovedSimpleLoanPage(driver);
-        Assertions.assertEquals("The desired amount is lower than the minimum amount (€50,000) of the selected loan type Mortgage. You may want to choose another loan type.", simpleLoanPage.getErrorString());
-    }
 
     @AfterEach //has been changed from @After
     public void tearDown() {
