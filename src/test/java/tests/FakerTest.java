@@ -20,9 +20,13 @@ class FakerTest {
 
     @BeforeEach
     public void startBrowser() {
-        System.setProperty("webdriver.chrome.driver", "src/test/java/resources/chromedriver");
-        driver = new ChromeDriver();
+        this.driver = new ChromeDriver();
         driver.manage().window().maximize();
+    }
+
+    @AfterEach //has been changed from @After
+    public void tearDown() {
+        driver.close();
     }
 
     @Test
@@ -56,11 +60,5 @@ class FakerTest {
         //Now validate the loan and select next
         Assertions.assertEquals("Mini-loan", simpleLoanPage.getVerifyValue("Loantype"));
         Assertions.assertEquals("€"+fakerAmount, simpleLoanPage.getVerifyValue("Amount"));
-    }
-
-
-    @AfterEach //has been changed from @After
-    public void tearDown() {
-        driver.close();
     }
 }

@@ -35,9 +35,6 @@ public class ImprovedSimpleLoanPage {
     }
 
     public void selectAndSetDropdown(By dropDownBy, String value){
-        WebElement dropDownElement = driver.findElement(dropDownBy);
-        Select elementSelect = new Select(dropDownElement);
-        dropDownElement.click();
-        elementSelect.selectByVisibleText(value);
+        new Select(driver.findElement(dropDownBy)).selectByVisibleText(value);
     }
 }

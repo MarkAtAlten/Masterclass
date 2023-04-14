@@ -17,8 +17,7 @@ class BeforeAfter {
 
     @BeforeEach
     public void startBrowser() {
-        System.setProperty("webdriver.chrome.driver", "src/test/java/resources/chromedriver");
-        driver = new ChromeDriver();
+        this.driver = new ChromeDriver();
         driver.manage().window().maximize();
     }
 

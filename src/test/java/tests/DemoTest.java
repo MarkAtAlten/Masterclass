@@ -3,6 +3,7 @@ package tests;
 import org.junit.jupiter.api.*;
 
 import org.openqa.selenium.By;
+import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
@@ -16,8 +17,7 @@ class DemoTest {
 
     @Test
     void UI_Excecise1() {
-        System.setProperty("webdriver.chrome.driver", "src/test/java/resources/chromedriver");
-        driver = new ChromeDriver();
+        this.driver = new ChromeDriver();
         driver.manage().window().maximize();
         driver.get("https://loanapplication.azurewebsites.net/");
 
@@ -28,7 +28,7 @@ class DemoTest {
         } catch (InterruptedException e) {
             e.printStackTrace();
         }
-        driver.findElement(By.xpath("//label[contains(text(), 'Mini-loan')]")).click();
+        driver.findElement(By.xpath("//label[contains(text(), 'Mini')]")).click();
         driver.findElement(By.xpath("//input[@placeholder='Amount']")).sendKeys("400");
         driver.findElement(By.xpath("//h3[contains(text(),'Request loan')]/following-sibling::form//button[@type='submit']")).click();
 
@@ -48,7 +48,7 @@ class DemoTest {
         driver.findElement(By.xpath("//input[@formcontrolname='income']")).sendKeys("12000");
         new Select(driver.findElement(By.xpath("//select[@formcontrolname='incometype']"))).selectByVisibleText("Temporary Contract");
 
-        driver.findElement(By.xpath("//h3[contains(text(),'Personal details')]/following-sibling::form//button[@type='submit']")).click();
+        driver.findElement(By.xpath("//h3[contains(text(),'Personal details')]/following-sibling::form//button[@type='submit']")).sendKeys(Keys.RETURN);
 
         //Now validate the loan and select next
         Assertions.assertEquals("Mini-loan", driver.findElement(By.xpath(getVerifyString("Loantype:"))).getText());
@@ -74,7 +74,6 @@ class DemoTest {
 
     @Test
     void UI_Excecise2() {
-        System.setProperty("webdriver.chrome.driver", "src/test/java/resources/chromedriver");
         this.driver = new ChromeDriver();
         driver.manage().window().maximize();
         driver.get("https://loanapplication.azurewebsites.net/");

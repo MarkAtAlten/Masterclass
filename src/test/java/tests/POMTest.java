@@ -17,7 +17,6 @@ class POMTest {
 
     @Test
     void UI_exercise1() {
-        System.setProperty("webdriver.chrome.driver", "src/test/java/resources/chromedriver");
         this.driver = new ChromeDriver();
         driver.manage().window().maximize();
         driver.get("https://loanapplication.azurewebsites.net/");
@@ -40,7 +39,6 @@ class POMTest {
 
     @Test
     void GetPersonalLoan() {
-        System.setProperty("webdriver.chrome.driver", "src/test/java/resources/chromedriver");
         this.driver = new ChromeDriver();
         driver.manage().window().maximize();
         driver.get("https://loanapplication.azurewebsites.net/");
@@ -62,7 +60,6 @@ class POMTest {
 
     @Test
     void GetResolvingCredit() {
-        System.setProperty("webdriver.chrome.driver", "src/test/java/resources/chromedriver");
         this.driver = new ChromeDriver();
         driver.manage().window().maximize();
         driver.get("https://loanapplication.azurewebsites.net/");
@@ -84,7 +81,6 @@ class POMTest {
 
     @Test
     void GetCarLoan() {
-        System.setProperty("webdriver.chrome.driver", "src/test/java/resources/chromedriver");
         this.driver = new ChromeDriver();
         driver.manage().window().maximize();
         driver.get("https://loanapplication.azurewebsites.net/");
@@ -106,7 +102,6 @@ class POMTest {
 
     @Test
     void Mortgage() {
-        System.setProperty("webdriver.chrome.driver", "src/test/java/resources/chromedriver");
         this.driver = new ChromeDriver();
         driver.manage().window().maximize();
         driver.get("https://loanapplication.azurewebsites.net/");
@@ -125,7 +120,6 @@ class POMTest {
         Assertions.assertEquals("€100,000", simpleLoanPage.getVerifyValue("Amount"));
         driver.close();
     }
-
 
     private String getVerifyString(String valueName) {
         return "//table[@id='verifyTable']//strong[contains(text(),'" + valueName + "')]/parent::td/following-sibling::td";

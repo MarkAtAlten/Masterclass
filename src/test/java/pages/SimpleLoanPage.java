@@ -82,16 +82,10 @@ public class SimpleLoanPage {
         driver.findElement(personalZipCodeBy).sendKeys(zipCode);
         driver.findElement(personalCityBy).sendKeys(city);
 
-        WebElement maritalStatusEle = driver.findElement(personalMaritalStatusBy);
-        Select maritalSelect = new Select(maritalStatusEle);
-        maritalStatusEle.click();
-        maritalSelect.selectByVisibleText(maritalStatus);
+        new Select(driver.findElement(personalMaritalStatusBy)).selectByVisibleText(maritalStatus);
 
         driver.findElement(personalIncomeBy).sendKeys(income);
-        WebElement incomeTypeEle = driver.findElement(personalIncomeTypeBy);
-        Select incomeTypeSelect = new Select(incomeTypeEle);
-        incomeTypeEle.click();
-        incomeTypeSelect.selectByVisibleText(incomeType);
+        new Select(driver.findElement(personalIncomeTypeBy)).selectByVisibleText(incomeType);
         driver.findElement(personalNextBy).click();
     }
 
